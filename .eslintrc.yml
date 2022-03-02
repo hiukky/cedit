@@ -1,0 +1,32 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - plugin:react/recommended
+  - airbnb
+  - airbnb-typescript
+parser: '@typescript-eslint/parser'
+parserOptions:
+  project:
+    - tsconfig.json
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: latest
+  sourceType: module
+globals:
+  Atomics: readonly
+  JSX: readonly
+  'jest/globals': true
+plugins:
+  - react
+  - '@typescript-eslint'
+rules:
+  '@typescript-eslint/semi': 0
+  '@typescript-eslint/comma-dangle': 0
+  import/prefer-default-export: 0
+  react/react-in-jsx-scope: 0
+  react/prop-types: 0
+  react/function-component-definition:
+    - 2
+    - namedComponents: arrow-function
+      unnamedComponents: arrow-function
