@@ -6,8 +6,9 @@
 }
 
 .cedit:empty::before {
-  content: attr(placeholder);
   position: absolute;
-  color: gray;
+  content: attr(placeholder);
   background-color: transparent;
+  cursor: text;
+  color: gray;
 }

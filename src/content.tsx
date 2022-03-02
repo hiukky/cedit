@@ -16,7 +16,7 @@ export const Content: React.FC<ContentProps> = ({
   placeholder
 }) => (
   <div
-    className={`cedit ${className}`}
+    className={`cedit ${className}`.trim()}
     placeholder={placeholder}
     contentEditable={editable}
     spellCheck={spellCheck}
