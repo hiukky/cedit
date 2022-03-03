@@ -9,6 +9,9 @@
   position: relative;
   content: attr(placeholder);
   background-color: transparent;
-  cursor: text;
   color: gray;
+}
+
+.cedit:is([contenteditable='true']):before {
+  cursor: text;
 }

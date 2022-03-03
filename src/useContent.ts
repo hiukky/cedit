@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Events, Maybe } from './types'
 
 export const useContent = (ref: React.RefObject<HTMLDivElement>) => {

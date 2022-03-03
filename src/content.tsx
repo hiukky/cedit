@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react'
 import './styled.css'
 
-import { ContentProps } from './types'
+import { useEffect, useRef } from 'react'
 
+import { ContentProps } from './types'
 import { useContent } from './useContent'
 
 export const Content: React.FC<ContentProps> = ({
