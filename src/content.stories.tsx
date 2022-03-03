@@ -2,7 +2,8 @@ import { Story, Meta } from '@storybook/react'
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { Content, ContentProps } from './content'
+import { Content } from './content'
+import { ContentProps } from './types'
 
 const Wrapper = Object.assign(
   styled.div`
@@ -18,6 +19,7 @@ const Wrapper = Object.assign(
       padding: 6px;
       margin-top: 10px;
       border: 2px solid gray;
+      min-height: 50px;
     }
 
     span {
@@ -68,6 +70,8 @@ const Template: Story<ContentProps> = args => {
     html: args.value || ''
   })
 
+  const [editable, setEditable] = useState(false)
+
   return (
     <Wrapper>
       <Wrapper.Editor>
@@ -83,7 +87,13 @@ const Template: Story<ContentProps> = args => {
 
         <div>
           <span>Preview HTML</span>
-          <div dangerouslySetInnerHTML={{ __html: value.html }} />
+          <Content
+            placeholder="Preview"
+            value={value.html}
+            editable={editable}
+            onFocus={() => setEditable(true)}
+            onBlur={() => setEditable(false)}
+          />
         </div>
       </Wrapper.Preview>
     </Wrapper>
@@ -98,5 +108,6 @@ Default.args = {
 export const InitialValue = Template.bind({})
 InitialValue.args = {
   placeholder: 'Type here...',
-  value: 'Hello world!'
+  value: 'Hello world!',
+  autoFocus: true
 }

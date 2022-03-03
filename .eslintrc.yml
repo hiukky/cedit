@@ -3,6 +3,7 @@ env:
   es2021: true
 extends:
   - plugin:react/recommended
+  - plugin:react-hooks/recommended
   - airbnb
   - airbnb-typescript
 parser: '@typescript-eslint/parser'
@@ -24,6 +25,9 @@ rules:
   '@typescript-eslint/semi': 0
   '@typescript-eslint/comma-dangle': 0
   import/no-extraneous-dependencies: 0
+  jsx-a11y/control-has-associated-label: 0
+  object-curly-newline: 0
+  no-param-reassign: 0
   import/prefer-default-export: 0
   react/jsx-props-no-spreading: 0
   react/destructuring-assignment: 0
