@@ -64,8 +64,8 @@ export default {
 
 const Template: Story<ContentProps> = args => {
   const [value, setValue] = useState({
-    text: '',
-    html: ''
+    text: args.value || '',
+    html: args.value || ''
   })
 
   return (
@@ -93,4 +93,10 @@ const Template: Story<ContentProps> = args => {
 export const Default = Template.bind({})
 Default.args = {
   placeholder: 'Type here...'
+}
+
+export const InitialValue = Template.bind({})
+InitialValue.args = {
+  placeholder: 'Type here...',
+  value: 'Hello world!'
 }

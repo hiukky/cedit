@@ -6,7 +6,7 @@
 }
 
 .cedit:empty::before {
-  position: absolute;
+  position: relative;
   content: attr(placeholder);
   background-color: transparent;
   cursor: text;

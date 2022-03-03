@@ -22,8 +22,8 @@ export const Content: React.FC<ContentProps> = ({
   const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (ref.current !== null && !value) {
-      ref.current.innerHTML = value
+    if (ref.current && ['<br>', '\n', ''].includes(value)) {
+      ref.current.innerHTML = ''
     }
   }, [value])
 
