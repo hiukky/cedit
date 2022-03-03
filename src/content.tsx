@@ -11,7 +11,7 @@ export const Content: React.FC<ContentProps> = ({
   spellCheck = false,
   className = '',
   placeholder,
-  autoFocus = false,
+  autoFocus = true,
   onChange = () => ({}),
   onFocus = () => ({}),
   onBlur = () => ({}),
@@ -29,7 +29,7 @@ export const Content: React.FC<ContentProps> = ({
 
   useEffect(() => {
     if (ref.current && contentRef.current) {
-      if (autoFocus && document.activeElement !== ref.current) {
+      if (autoFocus && editable && document.activeElement !== ref.current) {
         focus()
       }
 
@@ -41,7 +41,7 @@ export const Content: React.FC<ContentProps> = ({
         empty()
       }
     }
-  }, [value, empty, autoFocus, focus, set])
+  }, [value, empty, autoFocus, editable, focus, set])
 
   return (
     <div

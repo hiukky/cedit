@@ -70,8 +70,6 @@ const Template: Story<ContentProps> = args => {
     html: args.value || ''
   })
 
-  const [editable, setEditable] = useState(false)
-
   return (
     <Wrapper>
       <Wrapper.Editor>
@@ -87,13 +85,7 @@ const Template: Story<ContentProps> = args => {
 
         <div>
           <span>Preview HTML</span>
-          <Content
-            placeholder="Preview"
-            value={value.html}
-            editable={editable}
-            onFocus={() => setEditable(true)}
-            onBlur={() => setEditable(false)}
-          />
+          <Content placeholder="Preview" value={value.html} editable={false} />
         </div>
       </Wrapper.Preview>
     </Wrapper>
@@ -108,6 +100,5 @@ Default.args = {
 export const InitialValue = Template.bind({})
 InitialValue.args = {
   placeholder: 'Type here...',
-  value: 'Hello world!',
-  autoFocus: true
+  value: 'Hello world!'
 }
