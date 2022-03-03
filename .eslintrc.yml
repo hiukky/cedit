@@ -23,7 +23,12 @@ plugins:
 rules:
   '@typescript-eslint/semi': 0
   '@typescript-eslint/comma-dangle': 0
+  import/no-extraneous-dependencies: 0
   import/prefer-default-export: 0
+  react/jsx-props-no-spreading: 0
+  react/destructuring-assignment: 0
+  react/no-danger: 0
+  arrow-parens: 0
   react/react-in-jsx-scope: 0
   react/prop-types: 0
   react/function-component-definition:

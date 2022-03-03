@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import './styled.css'
 
 export type ContentProps = {
@@ -6,6 +7,7 @@ export type ContentProps = {
   editable?: boolean
   className?: string
   placeholder?: string
+  onChange?(value: Record<'text' | 'html', string>): void
 }
 
 export const Content: React.FC<ContentProps> = ({
@@ -13,15 +15,36 @@ export const Content: React.FC<ContentProps> = ({
   editable = true,
   spellCheck = false,
   className = '',
-  placeholder
-}) => (
-  <div
-    className={`cedit ${className}`.trim()}
-    placeholder={placeholder}
-    contentEditable={editable}
-    spellCheck={spellCheck}
-    suppressContentEditableWarning
-  >
-    {value}
-  </div>
-)
+  placeholder,
+  onChange = () => ({})
+}) => {
+  const contentRef = useRef(value)
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (ref.current !== null && !value) {
+      ref.current.innerHTML = value
+    }
+  }, [value])
+
+  return (
+    <div
+      ref={ref}
+      className={`cedit ${className}`.trim()}
+      placeholder={placeholder}
+      contentEditable={editable}
+      spellCheck={spellCheck}
+      suppressContentEditableWarning
+      onInput={event => {
+        const target = event.target as HTMLDivElement
+
+        return onChange({
+          html: target.innerHTML ?? '',
+          text: target.innerText ?? ''
+        })
+      }}
+    >
+      {contentRef.current}
+    </div>
+  )
+}
