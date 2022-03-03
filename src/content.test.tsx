@@ -9,7 +9,9 @@ describe('Content', () => {
       <div
         class="cedit"
         contenteditable="true"
+        role="textbox"
         spellcheck="false"
+        tabindex="0"
       >
         Hello world!
       </div>
@@ -26,7 +28,9 @@ describe('Content', () => {
         class="cedit"
         contenteditable="true"
         placeholder="placeholder..."
+        role="textbox"
         spellcheck="false"
+        tabindex="0"
       />
     `)
   })
