@@ -1,8 +1,13 @@
 import dts from 'rollup-plugin-dts'
 import esbuild from 'rollup-plugin-esbuild'
-import css from 'rollup-plugin-postcss'
+import postcss from 'rollup-plugin-postcss'
 
 const ext = format => (format == 'dts' ? 'd.ts' : 'js')
+
+const css = () =>
+  postcss({
+    minimize: true
+  })
 
 const bundle = format => ({
   input: 'src/index.ts',
