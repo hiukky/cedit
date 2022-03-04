@@ -20,12 +20,13 @@ export const Content: React.FC<ContentProps> = ({
   onKeyPress = () => ({})
 }) => {
   const ref = useRef<HTMLDivElement | null>(null)
+
   const contentRef = useRef({
     value,
     editable: false
   })
 
-  const { get, set, focus, empty } = useContent(ref)
+  const { get, append, focus, empty } = useContent(ref)
 
   useEffect(() => {
     if (ref.current && contentRef.current) {
@@ -34,14 +35,14 @@ export const Content: React.FC<ContentProps> = ({
       }
 
       if (!contentRef.current.editable) {
-        set(value)
+        append(value)
       }
 
       if (CLEAR_FIX.includes(value as typeof CLEAR_FIX[number])) {
         empty()
       }
     }
-  }, [value, empty, autoFocus, editable, focus, set])
+  }, [value, empty, autoFocus, editable, focus, append])
 
   return (
     <div
@@ -68,12 +69,19 @@ export const Content: React.FC<ContentProps> = ({
         dangerouslySetInnerHTML={{
           __html: contentRef.current.value
         }}
-        onBlur={event => onBlur(get(event))}
-        onFocus={event => onFocus(get(event))}
         onInput={event => onChange(get(event))}
         onKeyUp={event => onKeyUp(get(event))}
         onKeyDown={event => onKeyDown(get(event))}
         onKeyPress={event => onKeyPress(get(event))}
+        onBlur={event => {
+          contentRef.current.editable = false
+          onBlur(get(event))
+        }}
+        onFocus={event => {
+          contentRef.current.editable = true
+          focus()
+          onFocus(get(event))
+        }}
       />
     </div>
   )
