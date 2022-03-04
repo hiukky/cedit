@@ -39,6 +39,11 @@ const Wrapper = Object.assign(
       grid-template-columns: 1fr 1fr;
       padding: 20px 0;
 
+      .cedit {
+        border: none;
+        padding: 0;
+      }
+
       span {
         display: inline-flex;
         margin-bottom: 20px;
@@ -81,7 +86,7 @@ const Template: Story<ContentProps> = args => {
       <Wrapper.Preview>
         <div>
           <span>Preview Text</span>
-          <div>{value.text}</div>
+          <Content placeholder="Preview" value={value.text} editable={false} />
         </div>
 
         <div>

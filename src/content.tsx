@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 
 import { ContentProps } from './types'
 import { useContent } from './useContent'
+import { CLEAR_FIX } from './constants'
 
 export const Content: React.FC<ContentProps> = ({
   value,
@@ -35,7 +36,7 @@ export const Content: React.FC<ContentProps> = ({
         set(value)
       }
 
-      if (['<br>', '\n', ''].includes(value)) {
+      if (CLEAR_FIX.includes(value as typeof CLEAR_FIX[number])) {
         empty()
       }
     }
