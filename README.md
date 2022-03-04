@@ -67,6 +67,7 @@ You can check a practical example in [Demo](https://hiukky.github.io/cedit/).
 <br>
 
 ```tsx
+import { useState } from 'react'
 import { Content, ContentProps Maybe } from 'cedit'
 
 const App: React.FC = () => {
@@ -86,6 +87,7 @@ const App: React.FC = () => {
 
 | Property    | Type     | Description                                                                                                                                                                     |
 | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id          | string   | Specifies a unique id for an HTML element.                                                                                                                                      |
 | value       | string   | Can be plain text or html.                                                                                                                                                      |
 | spellCheck  | boolean  | Spell check.                                                                                                                                                                    |
 | editable    | boolean  | Enable editing when focusing on component                                                                                                                                       |

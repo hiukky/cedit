@@ -5,6 +5,7 @@ import { useContent } from './useContent'
 import { CLEAR_FIX, PLACEMENT } from './constants'
 
 export const Content: React.FC<ContentProps> = ({
+  id,
   value,
   editable = true,
   spellCheck = false,
@@ -58,6 +59,7 @@ export const Content: React.FC<ContentProps> = ({
       }}
     >
       <div
+        id={id}
         ref={ref}
         role="textbox"
         tabIndex={0}
