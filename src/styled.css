@@ -3,6 +3,9 @@
   border: none;
   outline: none;
   line-height: 1.3;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
 }
 
 .cedit:empty::before {

@@ -4,8 +4,7 @@ import { Story, Meta } from '@storybook/react'
 
 import styled from 'styled-components'
 
-import { Content } from './content'
-import { ContentProps } from './types'
+import { Content, ContentProps } from './'
 
 const Wrapper = Object.assign(
   styled.div`
