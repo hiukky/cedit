@@ -8,7 +8,7 @@ describe('Content', () => {
 
     expect(getByText('Hello world!')).toMatchInlineSnapshot(`
       <div
-        class="cedit"
+        class="cedit__content"
         contenteditable="true"
         role="textbox"
         spellcheck="false"
@@ -26,7 +26,7 @@ describe('Content', () => {
 
     expect(getByPlaceholderText('placeholder...')).toMatchInlineSnapshot(`
       <div
-        class="cedit"
+        class="cedit__content"
         contenteditable="true"
         placeholder="placeholder..."
         role="textbox"

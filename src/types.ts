@@ -1,3 +1,5 @@
+import { PLACEMENT } from './constants'
+
 export type Events = {
   key: React.KeyboardEvent<HTMLDivElement>
   form: React.FormEvent<HTMLDivElement>
@@ -17,6 +19,7 @@ export type ContentProps = {
   className?: string
   placeholder?: string
   autoFocus?: boolean
+  placement?: keyof typeof PLACEMENT
   onKeyUp?(data: Maybe<'key'>): void
   onKeyDown?(data: Maybe<'key'>): void
   onKeyPress?(data: Maybe<'key'>): void

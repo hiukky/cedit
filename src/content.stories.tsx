@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react'
 
 import styled from 'styled-components'
 
-import { Content, ContentProps } from './'
+import { Content, ContentProps } from '.'
 
 const Wrapper = Object.assign(
   styled.div`
@@ -25,7 +25,7 @@ const Wrapper = Object.assign(
 
     span {
       font-size: 0.9rem;
-      color: #318df7;
+      color: #fff;
     }
   `,
   {

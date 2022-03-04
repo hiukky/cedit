@@ -1,0 +1,71 @@
+@mixin placement($yaxis) {
+  &-start {
+    justify-content: $yaxis;
+    align-items: flex-start;
+
+    & div {
+      text-align: left;
+    }
+  }
+
+  &-center {
+    justify-content: $yaxis;
+    align-items: center;
+
+    & div {
+      text-align: center;
+
+      &:empty {
+        text-align: left;
+      }
+    }
+  }
+
+  &-end {
+    justify-content: $yaxis;
+    align-items: flex-end;
+
+    & div {
+      text-align: right;
+    }
+  }
+}
+
+.cedit {
+  display: flex;
+  flex-direction: column;
+  cursor: text;
+}
+
+.cedit__content {
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  outline: none;
+  line-height: 1.3;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+
+  &:empty::before {
+    position: relative;
+    content: attr(placeholder);
+    background-color: transparent;
+    color: gray;
+  }
+
+  &:is([contenteditable='true']):before {
+    cursor: text;
+  }
+}
+
+.top {
+  @include placement(flex-start);
+}
+
+.middle {
+  @include placement(center);
+}
+
+.bottom {
+  @include placement(flex-end);
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 
 import { ContentProps } from './types'
 import { useContent } from './useContent'
-import { CLEAR_FIX } from './constants'
+import { CLEAR_FIX, PLACEMENT } from './constants'
 
 export const Content: React.FC<ContentProps> = ({
   value,
@@ -11,6 +11,7 @@ export const Content: React.FC<ContentProps> = ({
   className = '',
   placeholder,
   autoFocus = true,
+  placement = 'topStart',
   onChange = () => ({}),
   onFocus = () => ({}),
   onBlur = () => ({}),
@@ -44,27 +45,36 @@ export const Content: React.FC<ContentProps> = ({
 
   return (
     <div
-      ref={ref}
-      role="textbox"
-      tabIndex={0}
-      className={`cedit ${className}`.trim()}
-      placeholder={placeholder}
-      contentEditable={editable}
-      spellCheck={spellCheck}
-      suppressContentEditableWarning
-      dangerouslySetInnerHTML={{ __html: contentRef.current.value }}
-      onBlur={event => {
+      role="presentation"
+      className={`cedit ${PLACEMENT[placement]} ${className}`.trim()}
+      onBlur={() => {
         contentRef.current.editable = false
-        onBlur(get(event))
+        ref.current?.blur()
       }}
-      onFocus={event => {
+      onClick={() => {
         contentRef.current.editable = true
-        onFocus(get(event))
+        ref.current?.focus()
       }}
-      onInput={event => onChange(get(event))}
-      onKeyUp={event => onKeyUp(get(event))}
-      onKeyDown={event => onKeyDown(get(event))}
-      onKeyPress={event => onKeyPress(get(event))}
-    />
+    >
+      <div
+        ref={ref}
+        role="textbox"
+        tabIndex={0}
+        contentEditable={editable}
+        spellCheck={spellCheck}
+        className="cedit__content"
+        placeholder={placeholder}
+        suppressContentEditableWarning
+        dangerouslySetInnerHTML={{
+          __html: contentRef.current.value
+        }}
+        onBlur={event => onBlur(get(event))}
+        onFocus={event => onFocus(get(event))}
+        onInput={event => onChange(get(event))}
+        onKeyUp={event => onKeyUp(get(event))}
+        onKeyDown={event => onKeyDown(get(event))}
+        onKeyPress={event => onKeyPress(get(event))}
+      />
+    </div>
   )
 }
