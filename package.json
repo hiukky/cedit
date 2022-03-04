@@ -4,6 +4,7 @@
   "repository": "git@github.com:hiukky/cedit.git",
   "author": "Romullo <developermarsh@gmail.com>",
   "description": "📝 A simple way to edit content in react.",
+  "homepage": "https://hiukky.github.io/cedit",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -15,6 +16,8 @@
     "test": "jest",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint . --ext .ts,.tsx --fix"
   },
@@ -34,6 +37,7 @@
     "@types/styled-components": "^5.1.24",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
+    "add": "^2.0.6",
     "esbuild": "^0.14.24",
     "eslint": "^8.10.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -43,6 +47,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.3",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
@@ -57,7 +62,8 @@
     "storybook-addon-sass-postcss": "^0.1.0",
     "styled-components": "^5.3.3",
     "ts-jest": "^27.1.3",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.2",
+    "yarn": "^1.22.17"
   },
   "peerDependencies": {
     "react": "^17.0.2",

@@ -62,6 +62,26 @@ The component has a simple interface, you can import the `ContentProps` interfac
 
 All handlers return a value of type `Maybe<HTMLDivElement>` with keys `text`, `html` and `event`.
 
+You can check a practical example in [Demo](https://hiukky.github.io/cedit/).
+
+<br>
+
+```tsx
+import { Content, ContentProps Maybe } from 'cedit'
+
+const App: React.FC = () => {
+  const [value, setValue] = useState('')
+
+  return (
+    <Content
+      value={value}
+      placeholder="Type here..."
+      onChange={({ text, html, event }) => setValue(html)}
+    />
+  )
+}
+```
+
 <br>
 
 | Property    | Type     | Description                                                                                                                                                                     |
@@ -79,24 +99,6 @@ All handlers return a value of type `Maybe<HTMLDivElement>` with keys `text`, `h
 | onBlur      | Maybe[T] | The onblur event occurs when an object loses focus.                                                                                                                             |
 | onFocus     | Maybe[T] | The onfocus event occurs when an element gets focus.                                                                                                                            |
 | onChange    | Maybe[T] | The onchange event occurs when the value of an element has been changed.                                                                                                        |
-
-<br>
-
-```tsx
-import { Content } from 'cedit'
-
-const App: React.FC = () => {
-  const [value, setValue] = useState('')
-
-  return (
-    <Content
-      value={value}
-      placeholder="Type here..."
-      onChange={({ text, html, event }) => setValue(html)}
-    />
-  )
-}
-```
 
 <br>
 
