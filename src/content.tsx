@@ -1,6 +1,4 @@
-import './styled.css'
-
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import { ContentProps } from './types'
 import { useContent } from './useContent'
