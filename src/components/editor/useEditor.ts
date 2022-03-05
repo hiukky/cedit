@@ -7,11 +7,17 @@ export const useEditor = (node: React.RefObject<HTMLDivElement>) => {
   const get = <E extends keyof Events>(event: Events[E]): Maybe<E> => {
     const target = event.target as HTMLDivElement
 
-    return {
-      event,
-      html: target.innerHTML ?? '',
-      text: target.innerText ?? ''
+    let text = target.innerText ?? ''
+    let html = target.innerHTML ?? ''
+
+    if (event.type === 'paste') {
+      const clip = event as Maybe<'clip'>['event']
+
+      text = clip.clipboardData?.getData('text/plain') ?? ''
+      html = clip.clipboardData?.getData('text/html') ?? ''
     }
+
+    return { event, html, text }
   }
 
   const append = (data: string): void => {

@@ -73,17 +73,22 @@ const Template: Story<ContentProps> = args => {
     <Container>
       <Content>
         <span>Editor</span>
-        <Editor {...args} value={value.text} onChange={setValue} />
+        <Editor
+          {...args}
+          value={value.text}
+          onChange={setValue}
+          onPaste={setValue}
+        />
       </Content>
 
       <Preview>
-        {['text', 'html'].map(type => (
+        {['text', 'html'].map((type, idx) => (
           <div key={type}>
             <span>Preview ({type.toUpperCase()})</span>
             <Editor
               placeholder="Preview"
               value={value[type as keyof typeof value]}
-              editable={editable}
+              editable={!idx && editable}
               onFocus={() => setEditable(true)}
               onBlur={() => setEditable(false)}
             />

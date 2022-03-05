@@ -18,7 +18,8 @@ export const Editor: React.FC<ContentProps> = ({
   onBlur = () => ({}),
   onKeyUp = () => ({}),
   onKeyDown = () => ({}),
-  onKeyPress = () => ({})
+  onKeyPress = () => ({}),
+  onPaste = () => ({})
 }) => {
   const ref = useRef<HTMLDivElement | null>(null)
 
@@ -39,7 +40,7 @@ export const Editor: React.FC<ContentProps> = ({
         empty()
       }
     }
-  }, [value, empty, autoFocus, editable, focus, append])
+  }, [append, empty, value])
 
   return (
     <div
@@ -90,6 +91,10 @@ export const Editor: React.FC<ContentProps> = ({
           contentRef.current.editable = true
           focus()
           onFocus(get(event))
+        }}
+        onPaste={event => {
+          focus()
+          onPaste(get(event))
         }}
       />
     </div>

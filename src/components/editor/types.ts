@@ -2,6 +2,7 @@ import { PLACEMENT } from './constants'
 
 export type Events = {
   key: React.KeyboardEvent<HTMLDivElement>
+  clip: React.ClipboardEvent<HTMLDivElement>
   form: React.FormEvent<HTMLDivElement>
   focus: React.FocusEvent<HTMLDivElement>
 }
@@ -27,4 +28,5 @@ export type ContentProps = {
   onBlur?(data: Maybe<'focus'>): void
   onFocus?(data: Maybe<'focus'>): void
   onChange?(data: Maybe<'form'>): void
+  onPaste?(data: Maybe<'clip'>): void
 }
