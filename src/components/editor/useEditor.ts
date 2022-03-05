@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Events, Maybe } from './types'
 
-export const useContent = (node: React.RefObject<HTMLDivElement>) => {
+export const useEditor = (node: React.RefObject<HTMLDivElement>) => {
   const get = <E extends keyof Events>(event: Events[E]): Maybe<E> => {
     const target = event.target as HTMLDivElement
 
@@ -28,8 +28,15 @@ export const useContent = (node: React.RefObject<HTMLDivElement>) => {
       range.selectNodeContents(node.current)
       range.collapse(false)
       selection?.addRange(range)
-      node.current.focus()
+
+      if (document.activeElement !== node.current) {
+        node.current.focus()
+      }
     }
+  }
+
+  const blur = (): void => {
+    node.current?.blur()
   }
 
   const empty = (): void => {
@@ -42,6 +49,7 @@ export const useContent = (node: React.RefObject<HTMLDivElement>) => {
   return {
     append,
     focus,
+    blur,
     empty,
     get
   }

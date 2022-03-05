@@ -1,4 +1,2 @@
-import './styled.scss'
-
-export { Content } from './content'
-export type { ContentProps, Maybe } from './types'
+export * from './components/editor'
+export * from './components/group'

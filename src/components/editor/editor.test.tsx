@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react'
 
-import { Content } from './content'
+import { Editor } from './editor'
 
-describe('Content', () => {
+describe('Editor', () => {
   it('should have hello world value', () => {
-    const { getByText } = render(<Content value="Hello world!" />)
+    const { getByText } = render(<Editor value="Hello world!" />)
 
     expect(getByText('Hello world!')).toMatchInlineSnapshot(`
       <div
@@ -21,7 +21,7 @@ describe('Content', () => {
 
   it('should have a placeholder', () => {
     const { getByPlaceholderText } = render(
-      <Content placeholder="placeholder..." value="" />
+      <Editor placeholder="placeholder..." value="" />
     )
 
     expect(getByPlaceholderText('placeholder...')).toMatchInlineSnapshot(`

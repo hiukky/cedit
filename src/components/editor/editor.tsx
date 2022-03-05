@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from 'react'
 
 import { ContentProps } from './types'
-import { useContent } from './useContent'
+import { useEditor } from './useEditor'
 import { CLEAR_FIX, PLACEMENT } from './constants'
 
-export const Content: React.FC<ContentProps> = ({
+export const Editor: React.FC<ContentProps> = ({
   id,
   value,
   editable = true,
   spellCheck = false,
   className = '',
   placeholder,
-  autoFocus = true,
+  autoFocus = false,
   placement = 'topStart',
   onChange = () => ({}),
   onFocus = () => ({}),
@@ -27,14 +27,10 @@ export const Content: React.FC<ContentProps> = ({
     editable: false
   })
 
-  const { get, append, focus, empty } = useContent(ref)
+  const { get, append, focus, empty, blur } = useEditor(ref)
 
   useEffect(() => {
     if (ref.current && contentRef.current) {
-      if (autoFocus && editable && document.activeElement !== ref.current) {
-        focus()
-      }
-
       if (!contentRef.current.editable) {
         append(value)
       }
@@ -47,22 +43,27 @@ export const Content: React.FC<ContentProps> = ({
 
   return (
     <div
+      data-cedit
+      data-autofocus={autoFocus}
       role="presentation"
       className={`cedit ${PLACEMENT[placement]} ${className}`.trim()}
+      style={{
+        cursor: editable ? 'text' : 'default'
+      }}
       onBlur={() => {
         contentRef.current.editable = false
-        ref.current?.blur()
+        blur()
       }}
-      onClick={() => {
+      onFocus={() => {
         contentRef.current.editable = true
-        ref.current?.focus()
+        focus()
       }}
     >
       <div
         id={id}
         ref={ref}
         role="textbox"
-        tabIndex={0}
+        tabIndex={editable ? 0 : -1}
         contentEditable={editable}
         spellCheck={spellCheck}
         className="cedit__content"
