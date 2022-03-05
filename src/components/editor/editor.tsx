@@ -27,7 +27,7 @@ export const Editor: React.FC<ContentProps> = ({
     editable: false
   })
 
-  const { get, append, focus, empty, blur } = useEditor(ref)
+  const { get, append, focus, empty, blur, moveCaretTo } = useEditor(ref)
 
   useEffect(() => {
     if (ref.current && contentRef.current) {
@@ -49,6 +49,12 @@ export const Editor: React.FC<ContentProps> = ({
       className={`cedit ${PLACEMENT[placement]} ${className}`.trim()}
       style={{
         cursor: editable ? 'text' : 'default'
+      }}
+      onMouseDown={event => {
+        if ((event.target as HTMLDivElement).firstChild === ref.current) {
+          event.preventDefault()
+          moveCaretTo(event.clientX, event.clientY)
+        }
       }}
       onBlur={() => {
         contentRef.current.editable = false

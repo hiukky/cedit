@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { caretRangeFromPoint } from './utils'
 import { Events, Maybe } from './types'
 
 export const useEditor = (node: React.RefObject<HTMLDivElement>) => {
@@ -46,7 +47,19 @@ export const useEditor = (node: React.RefObject<HTMLDivElement>) => {
     }
   }
 
+  const moveCaretTo = (x: number, y: number): void => {
+    const selection = window.getSelection()
+
+    const range = caretRangeFromPoint(x, y)
+
+    if (range) {
+      selection?.removeAllRanges()
+      selection?.addRange(range)
+    }
+  }
+
   return {
+    moveCaretTo,
     append,
     focus,
     blur,

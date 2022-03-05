@@ -1,6 +1,7 @@
 import dts from 'rollup-plugin-dts'
 import esbuild from 'rollup-plugin-esbuild'
 import postcss from 'rollup-plugin-postcss'
+import filesize from 'rollup-plugin-filesize'
 
 const ext = format => (format == 'dts' ? 'd.ts' : 'js')
 
@@ -19,7 +20,11 @@ const bundle = format => ({
   plugins:
     format == 'dts'
       ? [dts(), css()]
-      : [esbuild({ minify: true, tsconfig: '.tsconfig.build.json' }), css()],
+      : [
+          esbuild({ minify: true, tsconfig: '.tsconfig.build.json' }),
+          css(),
+          filesize()
+        ],
   external: id => !/^[./]/.test(id)
 })
 
