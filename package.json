@@ -14,7 +14,7 @@
     "prebuild": "rimraf dist",
     "build": "rollup -c",
     "sb:server": "start-storybook -p 6006",
-    "sb:build": "npm run build-storybook",
+    "sb:build": "build-storybook",
     "sb:deploy": "gh-pages -d storybook-static",
     "test": "jest",
     "test:cov": "jest --coverage --watchAll",
