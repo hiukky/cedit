@@ -48,6 +48,7 @@
   flex-direction: column;
   box-sizing: border-box;
   border: 1.5px solid #e5e5ea;
+  outline: 3px solid transparent;
   padding: 2px 4px;
   border-radius: 4px;
   min-height: 80px;
@@ -59,7 +60,7 @@
 
   &:focus-within {
     border-color: #79a4f3;
-    outline: 3px solid #a6e9ff;
+    outline-color: #a6e9ff;
   }
 }
 

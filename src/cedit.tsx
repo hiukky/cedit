@@ -28,7 +28,7 @@ export const Cedit: React.FC<CeditProps> = ({
     editable: false
   })
 
-  const { get, append, focus, empty, blur, moveCaretTo } = useCedit(ref)
+  const { get, append, setCaret, empty, blur, moveCaretOn } = useCedit(ref)
 
   useEffect(() => {
     if (ref.current && contentRef.current) {
@@ -49,25 +49,22 @@ export const Cedit: React.FC<CeditProps> = ({
       role="presentation"
       className={`cedit ${PLACEMENT[placement]} ${className}`.trim()}
       style={{
-        cursor: editable ? 'text' : 'default'
+        cursor: editable ? 'text' : 'default',
+        outlineColor: editable ? '' : 'transparent'
       }}
-      onMouseDown={event => {
-        if ((event.target as HTMLDivElement).firstChild === ref.current) {
-          event.preventDefault()
-          moveCaretTo(event.clientX, event.clientY)
-        }
-      }}
+      onClick={event => moveCaretOn(event, true)}
+      onMouseDown={event => moveCaretOn(event)}
       onBlur={() => {
         contentRef.current.editable = false
         blur()
       }}
       onFocus={() => {
         contentRef.current.editable = true
-        focus()
+        setCaret()
       }}
     >
       <div
-        id={id}
+        id={id?.toString()}
         ref={ref}
         role="textbox"
         tabIndex={editable ? 0 : -1}
@@ -89,11 +86,11 @@ export const Cedit: React.FC<CeditProps> = ({
         }}
         onFocus={event => {
           contentRef.current.editable = true
-          focus()
+          setCaret()
           onFocus(get(event))
         }}
         onPaste={event => {
-          focus()
+          setCaret()
           onPaste(get(event))
         }}
       />

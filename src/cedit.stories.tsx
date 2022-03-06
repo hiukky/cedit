@@ -33,10 +33,6 @@ const Preview = styled.div`
   padding: 20px 0;
   gap: 20px;
 
-  .cedit {
-    border: none;
-  }
-
   span {
     display: inline-flex;
     margin-bottom: 20px;

@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="cedit logo" src="./assets/banner.png"/>
+  <img alt="cedit logo" src="https://github.com/hiukky/cedit/raw/main/assets/banner.png"/>
 </div>
 
 <p align="center">
@@ -128,7 +128,7 @@ Cedit is in an initial version without many features yet, but you can feel free 
 
 <div align="center">
 <a target="_blank" rel="noopener noreferrer" href="https://www.buymeacoffee.com/hiukky">
-<img width="250" alt="buy me a coffee" src="./assets/coffe.svg"/>
+<img width="250" alt="buy me a coffee" src="https://github.com/hiukky/cedit/raw/main/assets/coffe.svg"/>
 </a>
 </div>
 

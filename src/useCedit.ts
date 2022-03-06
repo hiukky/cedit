@@ -20,13 +20,28 @@ export const useCedit = (node: React.RefObject<HTMLDivElement>) => {
     return { event, html, text }
   }
 
+  const blur = (): void => {
+    node.current?.blur()
+  }
+
+  const focus = (): void => {
+    node.current?.focus()
+  }
+
+  const empty = (): void => {
+    if (node.current) {
+      node.current.innerHTML = ''
+      node.current.innerText = ''
+    }
+  }
+
   const append = (data: string): void => {
     if (node.current) {
       node.current.innerHTML = data
     }
   }
 
-  const focus = (): void => {
+  const setCaret = (): void => {
     if (node.current) {
       const selection = window.getSelection()
       const range = document.createRange()
@@ -37,35 +52,38 @@ export const useCedit = (node: React.RefObject<HTMLDivElement>) => {
       selection?.addRange(range)
 
       if (document.activeElement !== node.current) {
-        node.current.focus()
+        focus()
       }
     }
   }
 
-  const blur = (): void => {
-    node.current?.blur()
-  }
+  const moveCaretOn = (
+    event: React.MouseEvent<HTMLDivElement>,
+    autofocus?: boolean
+  ): void => {
+    const isAllowed =
+      (event.target as HTMLDivElement).firstChild === node.current
 
-  const empty = (): void => {
-    if (node.current) {
-      node.current.innerHTML = ''
-      node.current.innerText = ''
-    }
-  }
+    if (isAllowed) {
+      event.preventDefault()
 
-  const moveCaretTo = (x: number, y: number): void => {
-    const selection = window.getSelection()
+      const selection = window.getSelection()
+      const range = caretRangeFromPoint(event.clientX, event.clientY)
 
-    const range = caretRangeFromPoint(x, y)
+      if (range) {
+        selection?.removeAllRanges()
+        selection?.addRange(range)
 
-    if (range) {
-      selection?.removeAllRanges()
-      selection?.addRange(range)
+        if (autofocus) {
+          focus()
+        }
+      }
     }
   }
 
   return {
-    moveCaretTo,
+    moveCaretOn,
+    setCaret,
     append,
     focus,
     blur,

@@ -14,7 +14,7 @@ export type Maybe<T extends keyof Events> = {
 }
 
 export type CeditProps = {
-  id?: string
+  id?: string | number
   value: string
   spellCheck?: boolean
   editable?: boolean
