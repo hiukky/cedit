@@ -47,13 +47,19 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: 1px solid #f1f2f6;
+  border: 1.5px solid #e5e5ea;
   padding: 2px 4px;
-  border-radius: 2px;
-  min-height: 60px;
+  border-radius: 4px;
+  min-height: 80px;
+  transition: border 0.3s;
+
+  &:hover {
+    border-color: #70a1ff;
+  }
 
   &:focus-within {
-    outline: 2px solid #70a1ff;
+    border-color: #79a4f3;
+    outline: 3px solid #a6e9ff;
   }
 }
 
@@ -69,7 +75,7 @@
   &:empty::before {
     position: relative;
     content: attr(placeholder);
-    background-color: transparent;
-    color: #999;
+    background-color: transparent !important;
+    color: #8e8e93;
   }
 }

@@ -1,4 +1,5 @@
 import dts from 'rollup-plugin-dts'
+import autoprefixer from 'autoprefixer'
 import esbuild from 'rollup-plugin-esbuild'
 import postcss from 'rollup-plugin-postcss'
 import filesize from 'rollup-plugin-filesize'
@@ -7,7 +8,8 @@ const ext = format => (format == 'dts' ? 'd.ts' : 'js')
 
 const css = () =>
   postcss({
-    minimize: true
+    minimize: true,
+    plugins: [autoprefixer()]
   })
 
 const bundle = format => ({
