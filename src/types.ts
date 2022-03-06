@@ -13,7 +13,7 @@ export type Maybe<T extends keyof Events> = {
   event: Events[T]
 }
 
-export type ContentProps = {
+export type CeditProps = {
   id?: string
   value: string
   spellCheck?: boolean

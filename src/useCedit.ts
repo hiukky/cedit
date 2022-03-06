@@ -3,7 +3,7 @@ import React from 'react'
 import { caretRangeFromPoint } from './utils'
 import { Events, Maybe } from './types'
 
-export const useEditor = (node: React.RefObject<HTMLDivElement>) => {
+export const useCedit = (node: React.RefObject<HTMLDivElement>) => {
   const get = <E extends keyof Events>(event: Events[E]): Maybe<E> => {
     const target = event.target as HTMLDivElement
 

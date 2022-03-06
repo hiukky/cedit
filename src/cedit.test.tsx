@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react'
 
-import { Editor } from './editor'
+import { Cedit } from './cedit'
 
-describe('Editor', () => {
+describe('Cedit', () => {
   it('should have hello world value', () => {
-    const { getByText } = render(<Editor value="Hello world!" />)
+    const { getByText } = render(<Cedit value="Hello world!" />)
 
     expect(getByText('Hello world!')).toMatchInlineSnapshot(`
       <div
@@ -21,7 +21,7 @@ describe('Editor', () => {
 
   it('should have a placeholder', () => {
     const { getByPlaceholderText } = render(
-      <Editor placeholder="placeholder..." value="" />
+      <Cedit placeholder="placeholder..." value="" />
     )
 
     expect(getByPlaceholderText('placeholder...')).toMatchInlineSnapshot(`

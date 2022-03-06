@@ -4,10 +4,9 @@ import { Story, Meta } from '@storybook/react'
 
 import styled from 'styled-components'
 
-import { Editor, ContentProps } from './components/editor'
-import { Group } from './components/group'
+import { Cedit, CeditProps, CeditProvider } from '.'
 
-const Container = styled(Group)`
+const Container = styled.div`
   position: relative;
   font-family: Arial, Helvetica, sans-serif;
   padding: 20px;
@@ -45,8 +44,8 @@ const Preview = styled.div`
 `
 
 export default {
-  title: 'Content Editor',
-  component: Editor,
+  title: 'Cedit Editor',
+  component: Cedit,
   argTypes: {
     value: {
       control: {
@@ -61,7 +60,7 @@ export default {
   }
 } as Meta
 
-const Template: Story<ContentProps> = args => {
+const Template: Story<CeditProps> = args => {
   const [value, setValue] = useState({
     text: args.value || '',
     html: args.value || ''
@@ -70,32 +69,34 @@ const Template: Story<ContentProps> = args => {
   const [editable, setEditable] = useState(false)
 
   return (
-    <Container>
-      <Content>
-        <span>Editor</span>
-        <Editor
-          {...args}
-          value={value.text}
-          onChange={setValue}
-          onPaste={setValue}
-        />
-      </Content>
+    <CeditProvider>
+      <Container>
+        <Content>
+          <span>Editor</span>
+          <Cedit
+            {...args}
+            value={value.text}
+            onChange={setValue}
+            onPaste={setValue}
+          />
+        </Content>
 
-      <Preview>
-        {['text', 'html'].map((type, idx) => (
-          <div key={type}>
-            <span>Preview ({type.toUpperCase()})</span>
-            <Editor
-              placeholder="Preview"
-              value={value[type as keyof typeof value]}
-              editable={!idx && editable}
-              onFocus={() => setEditable(true)}
-              onBlur={() => setEditable(false)}
-            />
-          </div>
-        ))}
-      </Preview>
-    </Container>
+        <Preview>
+          {['text', 'html'].map((type, idx) => (
+            <div key={type}>
+              <span>Preview ({type.toUpperCase()})</span>
+              <Cedit
+                placeholder="Preview"
+                value={value[type as keyof typeof value]}
+                editable={!idx && editable}
+                onFocus={() => setEditable(true)}
+                onBlur={() => setEditable(false)}
+              />
+            </div>
+          ))}
+        </Preview>
+      </Container>
+    </CeditProvider>
   )
 }
 

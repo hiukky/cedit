@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 
-import { ContentProps } from './types'
-import { useEditor } from './useEditor'
+import { CeditProps } from './types'
+import { useCedit } from './useCedit'
 import { CLEAR_FIX, PLACEMENT } from './constants'
 
-export const Editor: React.FC<ContentProps> = ({
+export const Cedit: React.FC<CeditProps> = ({
   id,
   value,
   editable = true,
@@ -28,7 +28,7 @@ export const Editor: React.FC<ContentProps> = ({
     editable: false
   })
 
-  const { get, append, focus, empty, blur, moveCaretTo } = useEditor(ref)
+  const { get, append, focus, empty, blur, moveCaretTo } = useCedit(ref)
 
   useEffect(() => {
     if (ref.current && contentRef.current) {

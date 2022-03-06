@@ -1,11 +1,9 @@
-import { useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
-import { GroupProps } from './types'
-
-export const Group: React.FC<GroupProps> = ({ children, ...rest }) => {
+export const CeditProvider: React.FC = ({ children }) => {
   const ref = useRef<HTMLDivElement | null>(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const editors = Array.from(
       ref.current?.querySelectorAll('div[data-cedit="true"]') || []
     )
@@ -20,9 +18,5 @@ export const Group: React.FC<GroupProps> = ({ children, ...rest }) => {
     }
   }, [])
 
-  return (
-    <div ref={ref} {...rest}>
-      {children}
-    </div>
-  )
+  return <div ref={ref}>{children}</div>
 }

@@ -6,9 +6,9 @@ export default {
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.(t|j)sx?$': 'ts-jest',
+    '^.+\\.(t|j)sx?$': 'ts-jest'
   },
   moduleNameMapper: {
-    '\\.css$': 'identity-obj-proxy',
-  },
-};
+    '\\.css$': 'identity-obj-proxy'
+  }
+}
