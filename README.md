@@ -58,9 +58,13 @@ yarn add cedit
 
 # Use
 
-The component has a simple interface, you can import the `ContentProps` interface for better specification.
+The component has a simple interface, you can import the `CeditProps` interface for better specification.
 
 All handlers return a value of type `Maybe<HTMLDivElement>` with keys `text`, `html` and `event`.
+
+<br>
+
+## Cedit
 
 You can check a practical example in [Demo](https://hiukky.github.io/cedit/).
 
@@ -68,17 +72,37 @@ You can check a practical example in [Demo](https://hiukky.github.io/cedit/).
 
 ```tsx
 import { useState } from 'react'
-import { Content, ContentProps Maybe } from 'cedit'
+import { Cedit, CeditProps, Maybe } from 'cedit'
 
 const App: React.FC = () => {
   const [value, setValue] = useState('')
 
   return (
-    <Content
+    <Cedit
       value={value}
       placeholder="Type here..."
       onChange={({ text, html, event }) => setValue(html)}
     />
+  )
+}
+```
+
+<br>
+
+## Provider
+
+If you want to control more than one editor, you can use `CeditProvider` to wrap all components and take advantage of features like autofocus. For now the provider does not offer extra features, but it will be implemented in the future.
+
+<br>
+
+```tsx
+import { Cedit, CeditProps, CeditProvider, Maybe } from 'cedit'
+
+const App: React.FC = () => {
+  return (
+    <CeditProvider>
+      {/* Editors */}
+    <CeditProvider>
   )
 }
 ```
@@ -101,6 +125,7 @@ const App: React.FC = () => {
 | onBlur      | Maybe[T] | The onblur event occurs when an object loses focus.                                                                                                                             |
 | onFocus     | Maybe[T] | The onfocus event occurs when an element gets focus.                                                                                                                            |
 | onChange    | Maybe[T] | The onchange event occurs when the value of an element has been changed.                                                                                                        |
+| onPaste     | Maybe[T] | The onpaste event occurs when the user pastes some content in an element.                                                                                                       |
 
 <br>
 
