@@ -8,6 +8,6 @@ export const PLACEMENT = <const>{
   middleCenter: 'middle-center',
   middleEnd: 'middle-end',
   bottomStart: 'bottom-start',
-  bottomCenter: 'bottom-start',
+  bottomCenter: 'bottom-center',
   bottomEnd: 'bottom-end'
 }
