@@ -13,6 +13,7 @@ export const Cedit: React.FC<CeditProps> = ({
   placeholder,
   autoFocus = false,
   placement = 'topStart',
+  style = {},
   onChange = () => ({}),
   onFocus = () => ({}),
   onBlur = () => ({}),
@@ -50,7 +51,8 @@ export const Cedit: React.FC<CeditProps> = ({
       className={`cedit ${PLACEMENT[placement]} ${className}`.trim()}
       style={{
         cursor: editable ? 'text' : 'default',
-        outlineColor: editable ? '' : 'transparent'
+        outlineColor: editable ? '' : 'transparent',
+        ...style
       }}
       onClick={event => moveCaretOn(event, true)}
       onMouseDown={event => moveCaretOn(event)}
