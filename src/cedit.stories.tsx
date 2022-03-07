@@ -80,7 +80,9 @@ const Template: Story<CeditProps> = args => {
         <Preview>
           {['text', 'html'].map((type, idx) => (
             <div key={type}>
-              <span>Preview ({type.toUpperCase()})</span>
+              <span>
+                Preview ({type.toUpperCase()} {!!idx && 'Readonly'})
+              </span>
               <Cedit
                 placeholder="Preview"
                 value={value[type as keyof typeof value]}

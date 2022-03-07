@@ -18,6 +18,7 @@ export type CeditProps = {
   value: string
   spellCheck?: boolean
   editable?: boolean
+  multiLine?: boolean
   className?: string
   placeholder?: string
   autoFocus?: boolean
