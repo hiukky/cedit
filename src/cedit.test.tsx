@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 
 import { Cedit } from './cedit'
 
@@ -36,3 +36,5 @@ describe('Cedit', () => {
     `)
   })
 })
+
+afterEach(cleanup)

@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React, { createContext, useEffect, useRef } from 'react'
+
+export const CeditContext = createContext({})
 
 export const CeditProvider: React.FC = ({ children }) => {
   const ref = useRef<HTMLDivElement | null>(null)

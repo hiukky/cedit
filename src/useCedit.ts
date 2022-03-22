@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { caretRangeFromPoint } from './utils'
 import { Events, Maybe } from './types'
 
