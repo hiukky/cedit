@@ -52,7 +52,7 @@
   padding: 2px 4px;
   border-radius: 4px;
   min-height: 80px;
-  transition: border 0.3s;
+  transition: 0.3s;
 
   &:hover {
     border-color: #70a1ff;
@@ -77,6 +77,6 @@
     position: relative;
     content: attr(placeholder);
     background-color: transparent !important;
-    color: #8e8e93;
+    opacity: 0.45;
   }
 }

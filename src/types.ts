@@ -18,10 +18,12 @@ export type CeditProps = {
   value: string
   spellCheck?: boolean
   editable?: boolean
+  multiLine?: boolean
   className?: string
   placeholder?: string
   autoFocus?: boolean
   placement?: keyof typeof PLACEMENT
+  style?: React.CSSProperties
   onKeyUp?(data: Maybe<'key'>): void
   onKeyDown?(data: Maybe<'key'>): void
   onKeyPress?(data: Maybe<'key'>): void

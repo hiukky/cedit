@@ -109,23 +109,25 @@ const App: React.FC = () => {
 
 <br>
 
-| Property    | Type     | Description                                                                                                                                                                     |
-| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id          | string   | Specifies a unique id for an HTML element.                                                                                                                                      |
-| value       | string   | Can be plain text or html.                                                                                                                                                      |
-| spellCheck  | boolean  | Spell check.                                                                                                                                                                    |
-| editable    | boolean  | Enable editing when focusing on component                                                                                                                                       |
-| className   | string   | CSS class for styling. By default no styles are defined for the component, only resets basic settings.                                                                          |
-| placeholder | string   | A small tip, phrase, word, which is intended to help the user understand how to fill out that form.                                                                             |
-| autoFocus   | boolean  | If enabled, the element receives focus automatically when displayed.                                                                                                            |
-| placement   | string   | Editable content centering, the accepted values are: `topStart`, `topCenter`, `topEnd`, `middleStart`, `middleCenter`,`middleEnd`,`bottomStart`,`bottomCenter` and `bottomEnd`. |
-| onKeyUp     | Maybe[T] | The keyup event fires when a key is released.                                                                                                                                   |
-| onKeyDown   | Maybe[T] | The keydown event is fired when a key is pressed.                                                                                                                               |
-| onKeyPress  | Maybe[T] | The onkeypress event occurs when the user presses a key.                                                                                                                        |
-| onBlur      | Maybe[T] | The onblur event occurs when an object loses focus.                                                                                                                             |
-| onFocus     | Maybe[T] | The onfocus event occurs when an element gets focus.                                                                                                                            |
-| onChange    | Maybe[T] | The onchange event occurs when the value of an element has been changed.                                                                                                        |
-| onPaste     | Maybe[T] | The onpaste event occurs when the user pastes some content in an element.                                                                                                       |
+| Property    | Type                | Description                                                                                                                                                                     |
+| ----------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id          | string              | Specifies a unique id for an HTML element.                                                                                                                                      |
+| value       | string              | Can be plain text or html.                                                                                                                                                      |
+| spellCheck  | boolean             | Spell check.                                                                                                                                                                    |
+| editable    | boolean             | Enable editing when focusing on component                                                                                                                                       |
+| multiLine   | boolean             | When true allows line wrapping.                                                                                                                                                 |
+| style       | React.CSSProperties | Custom styles.                                                                                                                                                                  |
+| className   | string              | CSS class for styling. By default no styles are defined for the component, only resets basic settings.                                                                          |
+| placeholder | string              | A small tip, phrase, word, which is intended to help the user understand how to fill out that form.                                                                             |
+| autoFocus   | boolean             | If enabled, the element receives focus automatically when displayed.                                                                                                            |
+| placement   | string              | Editable content centering, the accepted values are: `topStart`, `topCenter`, `topEnd`, `middleStart`, `middleCenter`,`middleEnd`,`bottomStart`,`bottomCenter` and `bottomEnd`. |
+| onKeyUp     | Maybe[T]            | The keyup event fires when a key is released.                                                                                                                                   |
+| onKeyDown   | Maybe[T]            | The keydown event is fired when a key is pressed.                                                                                                                               |
+| onKeyPress  | Maybe[T]            | The onkeypress event occurs when the user presses a key.                                                                                                                        |
+| onBlur      | Maybe[T]            | The onblur event occurs when an object loses focus.                                                                                                                             |
+| onFocus     | Maybe[T]            | The onfocus event occurs when an element gets focus.                                                                                                                            |
+| onChange    | Maybe[T]            | The onchange event occurs when the value of an element has been changed.                                                                                                        |
+| onPaste     | Maybe[T]            | The onpaste event occurs when the user pastes some content in an element.                                                                                                       |
 
 <br>
 

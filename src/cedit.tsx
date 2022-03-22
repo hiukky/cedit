@@ -8,11 +8,13 @@ export const Cedit: React.FC<CeditProps> = ({
   id,
   value,
   editable = true,
+  multiLine = true,
   spellCheck = false,
   className = '',
   placeholder,
   autoFocus = false,
   placement = 'topStart',
+  style = {},
   onChange = () => ({}),
   onFocus = () => ({}),
   onBlur = () => ({}),
@@ -49,6 +51,7 @@ export const Cedit: React.FC<CeditProps> = ({
       role="presentation"
       className={`cedit ${PLACEMENT[placement]} ${className}`.trim()}
       style={{
+        ...style,
         cursor: editable ? 'text' : 'default',
         outlineColor: editable ? '' : 'transparent'
       }}
@@ -78,7 +81,13 @@ export const Cedit: React.FC<CeditProps> = ({
         }}
         onInput={event => onChange(get(event))}
         onKeyUp={event => onKeyUp(get(event))}
-        onKeyDown={event => onKeyDown(get(event))}
+        onKeyDown={event => {
+          if (event.key === 'Enter' && !multiLine) {
+            event.preventDefault()
+          }
+
+          onKeyDown(get(event))
+        }}
         onKeyPress={event => onKeyPress(get(event))}
         onBlur={event => {
           contentRef.current.editable = false
