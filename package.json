@@ -1,6 +1,6 @@
 {
   "name": "cedit",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "repository": "git@github.com:hiukky/cedit.git",
   "author": "Romullo <developermarsh@gmail.com>",
   "description": "📝 A simple way to edit content in react.",
